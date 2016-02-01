@@ -1,0 +1,2 @@
+module StatusEventsHelper
+end
