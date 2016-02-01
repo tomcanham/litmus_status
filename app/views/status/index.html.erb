@@ -3,7 +3,7 @@
   <span class="timestamp">as of <%= @latest_status.updated_at %></span>
 </div>
 
-<h1>Latest (5) status updates</h1>
+<h1>Latest (<%= @latest.count %>) status updates</h1>
 <div>
   <% @latest.each do |status| %>
     <%= render status %>

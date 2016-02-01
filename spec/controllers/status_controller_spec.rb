@@ -17,7 +17,7 @@ RSpec.describe StatusController, :type => :controller do
     it "sets the latest 5 statuses" do
       get :index
 
-      expect(assigns(:latest)).to eq(StatusEvent.order(updated_at: :desc).take(5)) # last five events
+      expect(assigns(:latest)).to eq(StatusEvent.order(updated_at: :desc).take(10)) # last ten events
     end
 
     it "sets the last site up/down status" do
