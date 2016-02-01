@@ -1,6 +1,8 @@
 module API
   module V1
     class StatusEventsController < ApplicationController
+      protect_from_forgery with: :null_session
+
       def create
         @status_event = StatusEvent.new(status_event_params)
 
