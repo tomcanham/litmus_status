@@ -1,0 +1,3 @@
+<div class="status-event status <%= status_to_class(status_event) %>">
+  <div class="message">(<%= status_event.updated_at %>: <%= status_to_text(status_event) %>) <%= status_event.message %></div>
+</div>

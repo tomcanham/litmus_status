@@ -1,5 +1,10 @@
+<div class="site-status status <%= status_to_class(@latest_status) %>">
+  Site is: <%= status_to_text(@latest_status) %>
+  <span class="timestamp">as of <%= @latest_status.updated_at %></span>
+</div>
+
 <div>
   <% @latest.each do |status| %>
-    <%= status %>
+    <%= render status %>
   <% end %>
 </div>

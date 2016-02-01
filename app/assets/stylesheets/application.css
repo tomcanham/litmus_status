@@ -13,3 +13,29 @@
  *= require_tree .
  *= require_self
  */
+
+
+body {
+  background-color: silver;
+}
+
+.site-status {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.site-status .timestamp {
+  font-size: 50%;
+}
+
+.status.up {
+  background-color: green;
+}
+
+.status.down {
+  background-color: red;
+}
+
+.status.unknown {
+  background-color: yellow;
+}
