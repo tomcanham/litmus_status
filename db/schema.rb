@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20160201161331) do
 
   create_table "status_events", force: :cascade do |t|
     t.boolean  "site_down"
-    t.text     "message"
+    t.text     "message",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
