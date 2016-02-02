@@ -19,14 +19,14 @@ RSpec.describe API::V1::StatusEventsController, :type => :controller do
     end
 
     it "returns model validation failures" do
-      post :create, {site_down: true}
+      post :create, {}
 
       expect(StatusEvent.count).to eq(0);
       expect(response.status).to eq(400)
       parsed = JSON.parse(response.body)
 
       expect(parsed["message"]).to eq("Validation error")
-      expect(parsed["errors"]["message"][0]).to eq("is too short (minimum is 5 characters)")
+      expect(parsed["errors"]["base"]).to eq(["Must supply either status or message"])
     end
 
     it "does not require an update to site_down" do
@@ -37,6 +37,16 @@ RSpec.describe API::V1::StatusEventsController, :type => :controller do
 
       expect(parsed["message"]).to eq("I've got a really bad feeling about this...")
       expect(parsed["site_down"]).to eq(nil)
+    end
+
+    it "does not require an update to message" do
+      post :create, {site_down: true}
+
+      expect(StatusEvent.count).to eq(1);
+      parsed = JSON.parse(response.body)
+
+      expect(parsed["message"]).to eq(nil)
+      expect(parsed["site_down"]).to eq(true)
     end
   end
 end

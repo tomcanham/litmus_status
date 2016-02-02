@@ -30,8 +30,14 @@ RSpec.describe StatusEvent, :type => :model do
       expect(event).to be_valid
     end
 
-    it "does require message to be set" do
+    it "does not require message to be set" do
       event = StatusEvent.new(site_down: true)
+
+      expect(event).to be_valid
+    end
+
+    it "requires either site_down or message to be set" do
+      event = StatusEvent.new()
 
       expect(event).to_not be_valid
     end
